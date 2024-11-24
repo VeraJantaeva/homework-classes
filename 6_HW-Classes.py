@@ -84,13 +84,13 @@ class Reviewer(Mentor):
 
 # Функция расчета среднего значения оценок:
 def average_grade(all_grades):
-    if type(all_grades) is dict:
+    if isinstance(all_grades, dict):
         amount_grades = []
         for grades in all_grades.values():
             for grade in grades:
                 amount_grades.append(grade)
         return average_grade(amount_grades)
-    elif type(all_grades) is list and all_grades[0] != None:
+    elif type(all_grades) is dict and all_grades[0] != None:
         average = round(sum(all_grades) / len(all_grades), 2)
         return average
     else:
@@ -172,10 +172,10 @@ print(student_no_2)
 print()
 
 print('Средний балл студентов по определенному курсу')
-print(average_course_grade(student_list, 'Python'))
+print (average_course_grade(student_list, 'Python'))
 
 print('Cредний балл лекторов по всем курсам')
-print(average_lecturers_grade(lecturer_list))
+print(average_lecturers_grade(lecturer_list,average_course_grade))
 
 # print("сравнение")
 # print(student_no_1 < student_no_2)
@@ -187,4 +187,3 @@ print(average_lecturers_grade(lecturer_list))
 # print(lecturer_1 < lecturer_2)
 # print(lecturer_1 > lecturer_2)
 # print(lecturer_1 > student_no_1)
-
